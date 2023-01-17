@@ -3,7 +3,6 @@ import ApiServer from '@/server/ApiServer';
 import FastifyApplierGroup from '@/server/FastifyApplierGroup';
 import PostRepository from '@/repositories/CommentRepository';
 import routes from '@/routes';
-import plugins from '@/server/plugins';
 import { ICommentRecord } from '@/types/records';
 
 let app: FastifyInstance;
@@ -11,7 +10,7 @@ let app: FastifyInstance;
 beforeAll(async () => {
 	const api = new ApiServer({
 		routes: new FastifyApplierGroup(...routes),
-		plugins: new FastifyApplierGroup(...plugins),
+		plugins: new FastifyApplierGroup(),
 	});
 
 	await api.bootstrap();
